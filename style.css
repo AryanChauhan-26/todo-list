@@ -1,0 +1,301 @@
+:root {
+  color-scheme: light;
+  font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+  color: #202a35;
+  background: #f5f7f5;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --ink: #202a35;
+  --muted: #78838b;
+  --green: #2f725d;
+  --green-dark: #245c4b;
+  --line: #e8ece8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  padding: 72px 24px;
+  background:
+    radial-gradient(ellipse at 9% 4%, rgb(222 237 226 / 72%), transparent 32rem),
+    #f5f7f5;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+#root {
+  width: min(100%, 900px);
+  margin: 0 auto;
+}
+
+#root::before {
+  display: block;
+  margin-bottom: 30px;
+  content: "YOUR SPACE, IN ORDER";
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+#root::after {
+  display: block;
+  margin-top: 20px;
+  color: #98a19b;
+  content: "A little progress each day adds up to big results.";
+  font-size: 13px;
+  text-align: center;
+}
+
+#inputDiv {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
+  align-items: end;
+  gap: 18px;
+  padding: 30px;
+  border: 1px solid rgb(232 236 232 / 85%);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 16px 50px rgb(34 54 43 / 6%);
+}
+
+#inputDiv::before {
+  grid-column: 1 / -1;
+  margin-bottom: 2px;
+  color: var(--ink);
+  content: "Plan your day";
+  font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+#inputDiv > div {
+  min-width: 0;
+}
+
+#inputDiv label {
+  display: block;
+  margin-bottom: 9px;
+  color: #47534e;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+#inputDiv input {
+  width: 100%;
+  height: 46px;
+  padding: 0 13px;
+  border: 1px solid #e4e9e5;
+  border-radius: 10px;
+  outline: none;
+  background: #fbfcfb;
+  color: var(--ink);
+  font-size: 13px;
+  transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+#inputDiv input::placeholder {
+  color: #a4ada8;
+}
+
+#inputDiv input:focus {
+  border-color: #75a78e;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgb(91 151 116 / 13%);
+}
+
+#addTodo {
+  height: 46px;
+  padding: 0 19px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--green);
+  color: #fff;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: background 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+#addTodo:hover {
+  transform: translateY(-1px);
+  background: var(--green-dark);
+  box-shadow: 0 7px 16px rgb(47 114 93 / 20%);
+}
+
+#addTodo:focus-visible,
+#listTodo button:focus-visible {
+  outline: 3px solid rgb(91 151 116 / 35%);
+  outline-offset: 3px;
+}
+
+#listTodo {
+  display: grid;
+  gap: 12px;
+  margin-top: 38px;
+}
+
+#listTodo:empty::before {
+  content: "YOUR TASKS";
+  color: #68756e;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+#listTodo:empty::after {
+  padding: 32px 20px;
+  border: 1px dashed #d9e1da;
+  border-radius: 16px;
+  color: #89938d;
+  content: "Nothing on your list yet. Add a task to get started.";
+  font-size: 14px;
+  text-align: center;
+}
+
+#listTodo > div {
+  display: grid;
+  grid-template-columns: minmax(120px, 1fr) minmax(160px, 2fr) auto auto;
+  align-items: center;
+  gap: 20px;
+  padding: 19px 22px;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 5px 18px rgb(34 54 43 / 3%);
+  transition: border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+#listTodo > div:hover {
+  transform: translateY(-2px);
+  border-color: #d3e2d6;
+  box-shadow: 0 10px 24px rgb(34 54 43 / 7%);
+}
+
+#listTodo p {
+  min-width: 0;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+#listTodo p:first-child {
+  color: var(--ink);
+  font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+#listTodo p:nth-child(2) {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+#listTodo p:nth-child(3) {
+  padding: 7px 10px;
+  border-radius: 8px;
+  background: #f2f6f1;
+  color: #587261;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+#listTodo button {
+  padding: 8px 11px;
+  border: 1px solid #f0dfdc;
+  border-radius: 8px;
+  background: #fff;
+  color: #ae6256;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 700;
+  transition: background 160ms ease, border-color 160ms ease;
+}
+
+#listTodo button:hover {
+  border-color: #e8c9c4;
+  background: #fff6f4;
+}
+
+@media (max-width: 720px) {
+  body {
+    padding: 48px 20px;
+  }
+
+  #inputDiv {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  #inputDiv > div:last-child {
+    grid-column: 1 / -1;
+  }
+
+  #addTodo {
+    width: 100%;
+  }
+}
+
+@media (max-width: 520px) {
+  body {
+    padding: 36px 16px;
+  }
+
+  #root::before {
+    margin-bottom: 22px;
+  }
+
+  #inputDiv {
+    grid-template-columns: 1fr;
+    padding: 22px;
+  }
+
+  #inputDiv > div:last-child {
+    grid-column: auto;
+  }
+
+  #listTodo {
+    margin-top: 30px;
+  }
+
+  #listTodo > div {
+    grid-template-columns: 1fr auto;
+    gap: 10px 14px;
+    padding: 17px;
+  }
+
+  #listTodo p:first-child,
+  #listTodo p:nth-child(2) {
+    grid-column: 1 / -1;
+  }
+
+  #listTodo p:nth-child(3) {
+    justify-self: start;
+  }
+
+  #listTodo button {
+    justify-self: end;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
